@@ -6,18 +6,25 @@ import figlet from 'figlet';
 import chalk from 'chalk';
 import fetch from 'node-fetch';
 
+import { spinner } from './functions/spinner';
+
 const pkg = require(path.join(__dirname, '../package.json'));
 
 program
   .version(pkg.version)
   .description(pkg.description)
   .action(async ({ args }: { args: string[] }) => {
+    spinner.text = 'Checking report';
+    spinner.start();
+
     try {
       const res = await fetch(
         `https://covid19.mathdro.id/api/countries/${args[0]}`
       );
 
       const data = await res.json();
+
+      spinner.stop();
 
       const date = new Date(data.lastUpdate);
 
@@ -35,7 +42,9 @@ program
         `Last Update: ${date.getFullYear()}.${date.getMonth() +
           1}.${date.getDate()}`
       );
-    } catch {}
+    } catch {
+      spinner.fail(chalk.red('Unable to get report'));
+    }
   });
 
 program.on('--help', () => {
