@@ -47,7 +47,7 @@ program
       console.log('');
 
       console.log(
-        `Last Update: ${date.getFullYear()}.${convertTime(
+        `Last update: ${date.getFullYear()}.${convertTime(
           date.getMonth() + 1
         )}.${convertTime(date.getDate())}, ${convertTime(
           date.getHours()
