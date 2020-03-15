@@ -1,4 +1,4 @@
-# [Check is deprecated](https://github.com/jb1905/coronavirus-report)
+# [Coronavirus Report](https://github.com/jb1905/coronavirus-report)
 
 ## About
 
