@@ -19,7 +19,9 @@ program
 
     try {
       const res = await fetch(
-        `https://covid19.mathdro.id/api/countries/${args[0]}`
+        `https://covid19.mathdro.id/api${
+          args.length ? `/countries/${args[0]}` : ''
+        }`
       );
 
       const data = await res.json();
@@ -28,8 +30,14 @@ program
 
       const date = new Date(data.lastUpdate);
 
+      const convertTime = (time: number) => (time < 10 ? `0${time}` : time);
+
       console.log(
-        chalk.bold.blueBright(`${args[0][0].toUpperCase()}${args[0].slice(1)}`)
+        chalk.bold.blueBright(
+          args.length
+            ? `${args[0][0].toUpperCase()}${args[0].slice(1)}`
+            : 'Globally'
+        )
       );
 
       console.log(chalk.yellow(`Confirmed: ${data.confirmed.value}`));
@@ -39,10 +47,15 @@ program
       console.log('');
 
       console.log(
-        `Last Update: ${date.getFullYear()}.${date.getMonth() +
-          1}.${date.getDate()}`
+        `Last Update: ${date.getFullYear()}.${convertTime(
+          date.getMonth() + 1
+        )}.${convertTime(date.getDate())}, ${convertTime(
+          date.getHours()
+        )}:${convertTime(date.getMinutes())}`
       );
-    } catch {
+    } catch (err) {
+      console.log(err);
+
       spinner.fail(chalk.red('Unable to get report'));
     }
   });
