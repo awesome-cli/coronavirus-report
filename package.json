@@ -31,7 +31,8 @@
     "commander": "^5.0.0",
     "figlet": "^1.3.0",
     "node-fetch": "^2.6.0",
-    "ora": "^4.0.3"
+    "ora": "^4.0.3",
+    "two-digit": "^1.0.1"
   },
   "devDependencies": {
     "@types/figlet": "^1.2.0",

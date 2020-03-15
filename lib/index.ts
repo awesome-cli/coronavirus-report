@@ -5,6 +5,7 @@ import program from 'commander';
 import figlet from 'figlet';
 import fetch from 'node-fetch';
 import chalk from 'chalk';
+import twoDigit from 'two-digit';
 
 import { spinner } from './functions/spinner';
 
@@ -31,8 +32,6 @@ program
 
       const date = new Date(data.lastUpdate);
 
-      const convertTime = (time: number) => (time < 10 ? `0${time}` : time);
-
       console.log(
         chalk.bold.blueBright(
           args.length
@@ -48,11 +47,11 @@ program
       console.log('');
 
       console.log(
-        `Last update: ${date.getFullYear()}.${convertTime(
+        `Last update: ${date.getFullYear()}.${twoDigit(
           date.getMonth() + 1
-        )}.${convertTime(date.getDate())}, ${convertTime(
-          date.getHours()
-        )}:${convertTime(date.getMinutes())}`
+        )}.${twoDigit(date.getDate())}, ${twoDigit(date.getHours())}:${twoDigit(
+          date.getMinutes()
+        )}`
       );
     } catch (err) {
       console.log(err);
