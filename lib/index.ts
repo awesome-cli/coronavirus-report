@@ -5,7 +5,7 @@ import program from 'commander';
 import figlet from 'figlet';
 import fetch from 'node-fetch';
 import chalk from 'chalk';
-import twoDigit from 'two-digit';
+import dd from 'double-digit';
 
 import { spinner } from './functions/spinner';
 
@@ -47,11 +47,9 @@ program
       console.log('');
 
       console.log(
-        `Last update: ${date.getFullYear()}.${twoDigit(
-          date.getMonth() + 1
-        )}.${twoDigit(date.getDate())}, ${twoDigit(date.getHours())}:${twoDigit(
-          date.getMinutes()
-        )}`
+        `Last update: ${date.getFullYear()}.${dd(date.getMonth() + 1)}.${dd(
+          date.getDate()
+        )}, ${dd(date.getHours())}:${dd(date.getMinutes())}`
       );
     } catch (err) {
       console.log(err);
