@@ -1,4 +1,4 @@
-# [Coronavirus Report](https://github.com/jb1905/coronavirus-report)
+# Coronavirus Report
 
 ## About
 Coronavirus statisitcs CLI
