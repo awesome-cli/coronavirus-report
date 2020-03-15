@@ -13,6 +13,7 @@ const pkg = require(path.join(__dirname, '../package.json'));
 program
   .version(pkg.version)
   .description(pkg.description)
+  .usage('[country]')
   .action(async ({ args }: { args: string[] }) => {
     spinner.text = 'Checking report';
     spinner.start();
