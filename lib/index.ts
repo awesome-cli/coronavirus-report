@@ -3,8 +3,8 @@
 import path from 'path';
 import program from 'commander';
 import figlet from 'figlet';
-import chalk from 'chalk';
 import fetch from 'node-fetch';
+import chalk from 'chalk';
 
 import { spinner } from './functions/spinner';
 
