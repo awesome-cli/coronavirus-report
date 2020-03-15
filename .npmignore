@@ -1,0 +1,7 @@
+lib
+
+tsconfig.json
+.travis.yml
+.prettierrc
+
+yarn-error.log

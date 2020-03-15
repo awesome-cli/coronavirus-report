@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "outDir": "bin",
+    "rootDir": "lib",
+    "strict": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true
+  }
+}
