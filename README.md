@@ -1,7 +1,7 @@
 # [Coronavirus Report](https://github.com/jb1905/coronavirus-report)
 
 ## About
-
+Coronavirus statisitcs CLI
 
 ## How to Use
 ```bash

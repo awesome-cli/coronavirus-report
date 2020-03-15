@@ -1,7 +1,7 @@
 {
   "name": "coronavirus-report",
   "version": "1.0.0",
-  "description": "",
+  "description": "Coronavirus statisitcs CLI",
   "author": "Jakub Biesiada",
   "license": "MIT",
   "main": "bin/index.js",
