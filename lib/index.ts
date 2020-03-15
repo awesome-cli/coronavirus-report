@@ -10,8 +10,8 @@ const pkg = require(path.join(__dirname, '../package.json'));
 
 program
   .version(pkg.version)
-  .description('')
-  .action(async ({ args }) => {
+  .description(pkg.description)
+  .action(async ({ args }: { args: string[] }) => {
     try {
       const res = await fetch(
         `https://covid19.mathdro.id/api/countries/${args[0]}`
