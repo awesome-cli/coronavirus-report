@@ -5,7 +5,7 @@ Coronavirus statisitcs CLI
 
 ## How to Use
 ```bash
-$ coronavirus-report
+$ coronavirus-report [country]
 ```
 
 **Instead of `coronavirus-report` you can use aliases: `coronavirus` & `cr`**
