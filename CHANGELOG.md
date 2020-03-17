@@ -1,10 +1,10 @@
 # Coronavirus Report Changelog
 
-## 1.0.1 (2020-03-17)
+## 1.0.1 / 1.0.2 (2020-03-17)
 #### Change
 - changed title color from `white` to `grey`
 
-## Repository Changes
+#### Repository Changes
 - added keywords
 
 ## 1.0.0 (2020-03-17)
