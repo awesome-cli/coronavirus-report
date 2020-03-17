@@ -16,7 +16,13 @@
   "engines": {
     "node": ">=10"
   },
-  "keywords": [],
+  "keywords": [
+    "virus",
+    "coronavirus",
+    "cli",
+    "report",
+    "statistics"
+  ],
   "bugs": {
     "url": "https://github.com/JB1905/coronavirus-report/issues"
   },
