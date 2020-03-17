@@ -6,7 +6,7 @@
 ## About
 Coronavirus statisitcs CLI
 
-**[COVID-19 statistics API used in project](https://covid19.mathdro.id/api)**
+**[COVID-19 statistics API used in the project](https://covid19.mathdro.id/api)**
 
 ## How to Install
 First, install the CLI by npm:
