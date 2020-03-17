@@ -28,6 +28,12 @@ program
 
       const data = await res.json();
 
+      if (data.error) {
+        spinner.fail(chalk.red(data.error.message));
+
+        process.exit();
+      }
+
       spinner.stop();
 
       const date = new Date(data.lastUpdate);
@@ -51,10 +57,10 @@ program
           date.getDate()
         )}, ${dd(date.getHours())}:${dd(date.getMinutes())}`
       );
-    } catch (err) {
-      console.log(err);
-
+    } catch {
       spinner.fail(chalk.red('Unable to get report'));
+
+      process.exit();
     }
   });
 
