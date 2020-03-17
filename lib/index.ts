@@ -66,7 +66,7 @@ program
 
 program.on('--help', () => {
   console.log(
-    chalk.whiteBright(
+    chalk.grey(
       figlet.textSync('Coronavirus\nreport', {
         horizontalLayout: 'full',
         verticalLayout: 'full',
