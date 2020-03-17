@@ -6,6 +6,12 @@
 ## About
 Coronavirus statisitcs CLI
 
+## How to Install
+First, install the CLI by npm:
+```bash
+$ npm install -g coronavirus-report
+```
+
 ## How to Use
 ```bash
 $ coronavirus-report [country]
