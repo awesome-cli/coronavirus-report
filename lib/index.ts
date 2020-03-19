@@ -80,7 +80,9 @@ program
           console.log(update);
         }
 
-        if (index !== results.length - 1) console.log('');
+        if (index !== results.length - 1) {
+          console.log('');
+        }
       }
     );
   });
