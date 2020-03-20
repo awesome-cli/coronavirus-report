@@ -16,7 +16,7 @@ $ npm install -g coronavirus-report
 
 ## How to Use
 ```bash
-$ coronavirus-report [country]
+$ coronavirus-report [countries...]
 ```
 
 **Instead of `coronavirus-report` you can use aliases: `coronavirus` & `cr`**

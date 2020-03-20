@@ -1,6 +1,6 @@
 # Coronavirus Report Changelog
 
-## 1.1.0 (2020-03-17)
+## 1.1.0 / 1.1.1 (2020-03-20)
 #### New Feature
 - added support for multiple cities
 

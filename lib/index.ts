@@ -16,7 +16,7 @@ const pkg = require(path.join(__dirname, '../package.json'));
 program
   .version(pkg.version)
   .description(pkg.description)
-  .usage('[country]')
+  .usage('[countries...]')
   .action(async ({ args }: { args: string[] }) => {
     const places = args.length ? args : ['globally'];
 
