@@ -1,5 +1,9 @@
 # Coronavirus Report Changelog
 
+## 1.1.0 (2020-03-17)
+#### New Feature
+- added support for multiple cities
+
 ## 1.0.1 / 1.0.2 (2020-03-17)
 #### Change
 - changed title color from `white` to `grey`
