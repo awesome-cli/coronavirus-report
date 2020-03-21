@@ -21,7 +21,7 @@ program
     const places = args.length ? args : ['globally'];
 
     const results = await Promise.all(
-      places.map(async place => {
+      places.map(async (place) => {
         spinner.text = 'Checking report';
         spinner.start();
 
