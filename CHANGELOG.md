@@ -1,5 +1,9 @@
 # Coronavirus Report Changelog
 
+## 1.1.2 (2020-03-21)
+#### Repository Changes
+- replaced `double-digit` with `two-digit`
+
 ## 1.1.0 / 1.1.1 (2020-03-20)
 #### New Feature
 - added support for multiple cities

@@ -5,7 +5,7 @@ import program from 'commander';
 import figlet from 'figlet';
 import fetch from 'node-fetch';
 import chalk from 'chalk';
-import dd from 'double-digit';
+import td from 'two-digit';
 
 import { spinner } from './functions/spinner';
 
@@ -47,9 +47,9 @@ program
             confirmed: `Confirmed: ${data.confirmed.value}`,
             recovered: `Recovered: ${data.recovered.value}`,
             deaths: `Deaths: ${data.deaths.value}`,
-            update: `Last update: ${date.getFullYear()}.${dd(
+            update: `Last update: ${date.getFullYear()}.${td(
               date.getMonth() + 1
-            )}.${dd(date.getDate())}, ${dd(date.getHours())}:${dd(
+            )}.${td(date.getDate())}, ${td(date.getHours())}:${td(
               date.getMinutes()
             )}`,
           };
