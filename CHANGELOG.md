@@ -1,5 +1,9 @@
 # Coronavirus Report Changelog
 
+## 1.2.0 (2020-03-27)
+#### Bug Fix
+- Fixed display for multi word countries
+
 ## 1.1.2 (2020-03-21)
 #### Repository Changes
 - replaced `double-digit` with `two-digit`

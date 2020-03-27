@@ -1,6 +1,6 @@
 {
   "name": "coronavirus-report",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Coronavirus statisitcs CLI",
   "author": "Jakub Biesiada",
   "license": "MIT",
@@ -45,8 +45,8 @@
     "@types/node": "^13.9.3",
     "@types/node-fetch": "^2.5.5",
     "husky": "^4.2.3",
-    "lint-staged": "^10.0.8",
-    "prettier": "^2.0.1",
+    "lint-staged": "^10.0.9",
+    "prettier": "^2.0.2",
     "typescript": "^3.8.3"
   },
   "husky": {

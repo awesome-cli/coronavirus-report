@@ -9,7 +9,10 @@ import td from 'two-digit';
 
 import { spinner } from './functions/spinner';
 
+import { endpoint } from './utils';
+
 import { Results } from './types/results';
+import { getCountry } from './getCountry';
 
 const pkg = require(path.join(__dirname, '../package.json'));
 
@@ -18,7 +21,7 @@ program
   .description(pkg.description)
   .usage('[countries...]')
   .action(async ({ args }: { args: string[] }) => {
-    const places = args.length ? args : ['globally'];
+    const places = args.length ? args : ['Globally'];
 
     const results = await Promise.all(
       places.map(async (place) => {
@@ -26,9 +29,15 @@ program
         spinner.start();
 
         try {
+          const countryInfo = await getCountry(place);
+
+          if (countryInfo === undefined && place !== 'Globally') {
+            return { error: `Country \`${place}\` not found in JHU database` };
+          }
+
           const res = await fetch(
-            `https://covid19.mathdro.id/api${
-              place !== 'globally' ? `/countries/${place}` : ''
+            `${endpoint}${
+              place !== 'Globally' ? `/countries/${countryInfo?.name}` : ''
             }`
           );
 
@@ -43,7 +52,7 @@ program
           const date = new Date(data.lastUpdate);
 
           return {
-            place: `${place[0].toUpperCase()}${place.slice(1)}`,
+            place: countryInfo?.name ?? place,
             confirmed: `Confirmed: ${data.confirmed.value}`,
             recovered: `Recovered: ${data.recovered.value}`,
             deaths: `Deaths: ${data.deaths.value}`,
