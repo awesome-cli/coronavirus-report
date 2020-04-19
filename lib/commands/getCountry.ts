@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 
-import { endpoint } from './utils';
+import { endpoint } from '../utils';
 
 export const getCountry = async (name: string) => {
   const res = await fetch(`${endpoint}/countries`);

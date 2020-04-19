@@ -11,17 +11,26 @@ import { spinner } from './functions/spinner';
 
 import { endpoint } from './utils';
 
-import { getCountry } from './getCountry';
+import { getCountry } from './commands/getCountry';
 
 import { Results } from './types/results';
+
+import { interactiveMode } from './interactiveMode';
 
 const pkg = require(path.join(__dirname, '../package.json'));
 
 program
   .version(pkg.version)
   .description(pkg.description)
-  .usage('[countries...]')
-  .action(async ({ args }: { args: string[] }) => {
+  .usage('[countries...] [options]')
+  .option('-d, --date [date]', 'report for given date')
+  .action(async ({ date, args }: { date: any; args: string[] }) => {
+    console.log(date);
+
+    // const data = await interactiveMode();
+
+    // console.log(data);
+
     const places = args.length ? args : ['Globally'];
 
     const results = await Promise.all(
