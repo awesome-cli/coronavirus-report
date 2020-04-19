@@ -19,92 +19,109 @@ import { interactiveMode } from './interactiveMode';
 
 const pkg = require(path.join(__dirname, '../package.json'));
 
+// const countGrowth = async ({ date }: any) => {
+//   fetch(`${endpoint}`);
+// };
+
 program
   .version(pkg.version)
   .description(pkg.description)
   .usage('[countries...] [options]')
   .option('-d, --date [date]', 'report for given date')
-  .action(async ({ date, args }: { date: any; args: string[] }) => {
-    console.log(date);
+  .option('-g, --growth', 'display growth')
+  .action(
+    async ({
+      date,
+      growth,
+      args,
+    }: {
+      date: any;
+      growth: any;
+      args: string[];
+    }) => {
+      // console.log(growth);
 
-    // const data = await interactiveMode();
+      // const data = await interactiveMode();
 
-    // console.log(data);
+      // console.log(data);
 
-    const places = args.length ? args : ['Globally'];
+      const places = args.length ? args : ['Globally'];
 
-    const results = await Promise.all(
-      places.map(async (place) => {
-        spinner.text = 'Checking report';
-        spinner.start();
+      const results = await Promise.all(
+        places.map(async (place) => {
+          spinner.text = 'Checking report';
+          spinner.start();
 
-        try {
-          const countryInfo = await getCountry(place);
+          try {
+            const countryInfo = await getCountry(place);
 
-          if (countryInfo === undefined && place !== 'Globally') {
-            return { error: `Country \`${place}\` not found in JHU database` };
+            if (countryInfo === undefined && place !== 'Globally') {
+              return {
+                error: `Country \`${place}\` not found in JHU database`,
+              };
+            }
+
+            const res = await fetch(
+              `${endpoint}${
+                place !== 'Globally' ? `/countries/${countryInfo?.name}` : ''
+              }`
+            );
+
+            const data = await res.json();
+
+            spinner.stop();
+
+            if (data.error) {
+              return { error: data.error.message };
+            }
+
+            const date = new Date(data.lastUpdate);
+
+            return {
+              place: countryInfo?.name ?? place,
+              confirmed: `Confirmed: ${data.confirmed.value}`,
+              recovered: `Recovered: ${data.recovered.value}`,
+              deaths: `Deaths: ${data.deaths.value}`,
+              update: `Last update: ${date.getFullYear()}.${td(
+                date.getMonth() + 1
+              )}.${td(date.getDate())}, ${td(date.getHours())}:${td(
+                date.getMinutes()
+              )}`,
+            };
+          } catch {
+            spinner.stop();
+
+            return { error: 'Unable to get report' };
+          }
+        })
+      );
+
+      results.map(
+        (
+          { place, confirmed, recovered, deaths, update, error }: Results,
+          index
+        ) => {
+          if (error) {
+            spinner.fail(chalk.red(error));
+          } else {
+            console.log(chalk.bold.blueBright(place));
+
+            console.log(chalk.yellow(confirmed));
+            console.log(chalk.green(recovered));
+            console.log(chalk.red(deaths));
+
+            console.log('');
+
+            console.log(update);
           }
 
-          const res = await fetch(
-            `${endpoint}${
-              place !== 'Globally' ? `/countries/${countryInfo?.name}` : ''
-            }`
-          );
-
-          const data = await res.json();
-
-          spinner.stop();
-
-          if (data.error) {
-            return { error: data.error.message };
+          if (index !== results.length - 1) {
+            console.log('');
           }
-
-          const date = new Date(data.lastUpdate);
-
-          return {
-            place: countryInfo?.name ?? place,
-            confirmed: `Confirmed: ${data.confirmed.value}`,
-            recovered: `Recovered: ${data.recovered.value}`,
-            deaths: `Deaths: ${data.deaths.value}`,
-            update: `Last update: ${date.getFullYear()}.${td(
-              date.getMonth() + 1
-            )}.${td(date.getDate())}, ${td(date.getHours())}:${td(
-              date.getMinutes()
-            )}`,
-          };
-        } catch {
-          spinner.stop();
-
-          return { error: 'Unable to get report' };
         }
-      })
-    );
-
-    results.map(
-      (
-        { place, confirmed, recovered, deaths, update, error }: Results,
-        index
-      ) => {
-        if (error) {
-          spinner.fail(chalk.red(error));
-        } else {
-          console.log(chalk.bold.blueBright(place));
-
-          console.log(chalk.yellow(confirmed));
-          console.log(chalk.green(recovered));
-          console.log(chalk.red(deaths));
-
-          console.log('');
-
-          console.log(update);
-        }
-
-        if (index !== results.length - 1) {
-          console.log('');
-        }
-      }
-    );
-  });
+      );
+    }
+  );
 
 program.on('--help', () => {
   console.log(

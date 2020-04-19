@@ -1,4 +1,4 @@
-# [Coronavirus Report](https://github.com/jb1905/coronavirus-report)
+# [Coronavirus Report](https://github.com/cool-hooks/coronavirus-report)
 
 [![NPM version](http://img.shields.io/npm/v/coronavirus-report.svg?style=flat-square)](https://www.npmjs.com/package/coronavirus-report)
 [![NPM downloads](http://img.shields.io/npm/dm/coronavirus-report.svg?style=flat-square)](https://www.npmjs.com/package/coronavirus-report)

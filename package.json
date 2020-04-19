@@ -1,6 +1,6 @@
 {
   "name": "coronavirus-report",
-  "version": "1.2.0",
+  "version": "2.0.0-alpha.0",
   "description": "Coronavirus statisitcs CLI",
   "author": "Jakub Biesiada",
   "license": "MIT",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/JB1905/coronavirus-report.git"
+    "url": "https://github.com/cool-hooks/coronavirus-report.git"
   },
   "engines": {
     "node": ">=10"
@@ -24,9 +24,9 @@
     "statistics"
   ],
   "bugs": {
-    "url": "https://github.com/JB1905/coronavirus-report/issues"
+    "url": "https://github.com/cool-hooks/coronavirus-report/issues"
   },
-  "homepage": "https://github.com/JB1905/coronavirus-report#readme",
+  "homepage": "https://github.com/cool-hooks/coronavirus-report#readme",
   "bin": {
     "coronavirus-report": "bin/index.js",
     "coronavirus": "bin/index.js",
