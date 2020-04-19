@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cool-hooks/coronavirus-report.git"
+    "url": "https://github.com/awesome-cli/coronavirus-report.git"
   },
   "engines": {
     "node": ">=10"
@@ -24,9 +24,9 @@
     "statistics"
   ],
   "bugs": {
-    "url": "https://github.com/cool-hooks/coronavirus-report/issues"
+    "url": "https://github.com/awesome-cli/coronavirus-report/issues"
   },
-  "homepage": "https://github.com/cool-hooks/coronavirus-report#readme",
+  "homepage": "https://github.com/awesome-cli/coronavirus-report#readme",
   "bin": {
     "coronavirus-report": "bin/index.js",
     "coronavirus": "bin/index.js",
