@@ -3,125 +3,89 @@
 import path from 'path';
 import program from 'commander';
 import figlet from 'figlet';
-import fetch from 'node-fetch';
 import chalk from 'chalk';
-import td from 'two-digit';
 
 import { spinner } from './functions/spinner';
 
-import { endpoint } from './utils';
+import { interactiveMode, Options } from './commands/interactiveMode';
+import { getByDate } from './commands/getByDate';
+import { getToday } from './commands/getToday';
 
-import { getCountry } from './commands/getCountry';
+import Params from './interfaces/Params';
 
-import { Results } from './types/results';
-
-import { interactiveMode } from './interactiveMode';
+import { Statistic } from './enums/Statistic';
 
 const pkg = require(path.join(__dirname, '../package.json'));
-
-// const countGrowth = async ({ date }: any) => {
-//   fetch(`${endpoint}`);
-// };
 
 program
   .version(pkg.version)
   .description(pkg.description)
   .usage('[countries...] [options]')
+  .option('-i, --interactive', 'display interactive form')
+  .option('-a, --all', 'display summarized stats')
   .option('-d, --date [date]', 'report for given date')
   .option('-g, --growth', 'display growth')
-  .action(
-    async ({
-      date,
-      growth,
-      args,
-    }: {
-      date: any;
-      growth: any;
-      args: string[];
-    }) => {
-      // console.log(growth);
+  .action(async (params: Params) => {
+    const {
+      interactive,
+      all: displayAllStats,
+      date: statsForDate,
+      growth: displayDailyGrowth,
+      args: countries,
+    } = params;
 
-      // const data = await interactiveMode();
+    let options = {} as Options;
 
-      // console.log(data);
+    if (interactive) {
+      options = await interactiveMode();
+    } else {
+      if (countries.length) {
+        options.statistics = Statistic.GivenCountry;
+        options.countries = countries;
+      } else {
+        options.statistics = Statistic.Globally;
+      }
 
-      const places = args.length ? args : ['Globally'];
+      options.all = displayAllStats;
+      options.growth = displayDailyGrowth;
 
-      const results = await Promise.all(
-        places.map(async (place) => {
-          spinner.text = 'Checking report';
-          spinner.start();
-
-          try {
-            const countryInfo = await getCountry(place);
-
-            if (countryInfo === undefined && place !== 'Globally') {
-              return {
-                error: `Country \`${place}\` not found in JHU database`,
-              };
-            }
-
-            const res = await fetch(
-              `${endpoint}${
-                place !== 'Globally' ? `/countries/${countryInfo?.name}` : ''
-              }`
-            );
-
-            const data = await res.json();
-
-            spinner.stop();
-
-            if (data.error) {
-              return { error: data.error.message };
-            }
-
-            const date = new Date(data.lastUpdate);
-
-            return {
-              place: countryInfo?.name ?? place,
-              confirmed: `Confirmed: ${data.confirmed.value}`,
-              recovered: `Recovered: ${data.recovered.value}`,
-              deaths: `Deaths: ${data.deaths.value}`,
-              update: `Last update: ${date.getFullYear()}.${td(
-                date.getMonth() + 1
-              )}.${td(date.getDate())}, ${td(date.getHours())}:${td(
-                date.getMinutes()
-              )}`,
-            };
-          } catch {
-            spinner.stop();
-
-            return { error: 'Unable to get report' };
-          }
-        })
-      );
-
-      results.map(
-        (
-          { place, confirmed, recovered, deaths, update, error }: Results,
-          index
-        ) => {
-          if (error) {
-            spinner.fail(chalk.red(error));
-          } else {
-            console.log(chalk.bold.blueBright(place));
-
-            console.log(chalk.yellow(confirmed));
-            console.log(chalk.green(recovered));
-            console.log(chalk.red(deaths));
-
-            console.log('');
-
-            console.log(update);
-          }
-
-          if (index !== results.length - 1) {
-            console.log('');
-          }
-        }
-      );
+      if (statsForDate) {
+        options.date = new Date(statsForDate);
+      } else {
+        options.date = new Date();
+      }
     }
-  );
+
+    // console.log(options.date);
+
+    // const data = await getToday(options.countries[0]);
+    const data = await getByDate(options.date);
+
+    console.log(data.find((item: any) => item.countryRegion === 'Poland'));
+
+    let theDayBeforeStats = {} as any;
+
+    if (options.growth || options.all) {
+      const dayBefore = new Date();
+
+      if (options.date) {
+        dayBefore.setDate(options.date.getDate() - 1);
+      } else {
+        dayBefore.setDate(dayBefore.getDate() - 1);
+      }
+
+      // console.log(dayBefore);
+
+      theDayBeforeStats = await getByDate(dayBefore);
+
+      // console.log(theDayBeforeStats);
+    }
+
+    spinner.text = 'Checking report';
+    spinner.start();
+
+    spinner.stop();
+  });
 
 program.on('--help', () => {
   console.log(
