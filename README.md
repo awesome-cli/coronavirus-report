@@ -12,6 +12,7 @@ Coronavirus statisitcs CLI
 ## How to Install
 
 First, install the CLI by npm:
+
 ```sh
 $ npm install -g coronavirus-report
 ```
