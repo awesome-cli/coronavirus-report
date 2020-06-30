@@ -1,5 +1,12 @@
 # Coronavirus Report Changelog
 
+## 1.3.0 (2020-06-30)
+
+#### Repository Changes
+
+- updated URLs
+- cleaned up
+
 ## 1.2.0 (2020-03-27)
 
 #### Bug Fix
