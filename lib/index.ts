@@ -11,9 +11,9 @@ import { spinner } from './functions/spinner';
 
 import { endpoint } from './utils';
 
-import { getCountry } from './getCountry';
+import { getCountry } from './commands/getCountry';
 
-import { Results } from './types/results';
+import { Results } from './interfaces/results';
 
 const pkg = require(path.join(__dirname, '../package.json'));
 

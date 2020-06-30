@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/JB1905/coronavirus-report.git"
+    "url": "https://github.com/awesome-cli/coronavirus-report.git"
   },
   "engines": {
     "node": ">=10"
@@ -24,30 +24,30 @@
     "statistics"
   ],
   "bugs": {
-    "url": "https://github.com/JB1905/coronavirus-report/issues"
+    "url": "https://github.com/awesome-cli/coronavirus-report/issues"
   },
-  "homepage": "https://github.com/JB1905/coronavirus-report#readme",
+  "homepage": "https://github.com/awesome-cli/coronavirus-report#readme",
   "bin": {
     "coronavirus-report": "bin/index.js",
     "coronavirus": "bin/index.js",
     "cr": "bin/index.js"
   },
   "dependencies": {
-    "chalk": "^4.0.0",
-    "commander": "^5.0.0",
-    "figlet": "^1.3.0",
+    "chalk": "^4.1.0",
+    "commander": "^5.1.0",
+    "figlet": "^1.4.0",
     "node-fetch": "^2.6.0",
-    "ora": "^4.0.3",
-    "two-digit": "^1.0.5"
+    "ora": "^4.0.4",
+    "two-digit": "^1.0.6"
   },
   "devDependencies": {
     "@types/figlet": "^1.2.0",
-    "@types/node": "^13.11.0",
-    "@types/node-fetch": "^2.5.5",
-    "husky": "^4.2.3",
-    "lint-staged": "^10.1.2",
-    "prettier": "^2.0.4",
-    "typescript": "^3.8.3"
+    "@types/node": "^14.0.14",
+    "@types/node-fetch": "^2.5.7",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "prettier": "^2.0.5",
+    "typescript": "^3.9.5"
   },
   "husky": {
     "hooks": {
