@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES5",
     "outDir": "bin",
     "rootDir": "lib",
     "strict": true,

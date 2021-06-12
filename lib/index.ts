@@ -5,7 +5,7 @@ import program from 'commander';
 import figlet from 'figlet';
 import chalk from 'chalk';
 
-import { spinner } from './functions/spinner';
+import { spinner } from './config/spinner';
 
 import { interactiveMode, Options } from './commands/interactiveMode';
 import { getByDate } from './commands/getByDate';
