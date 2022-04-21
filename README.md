@@ -1,13 +1,18 @@
 # [Coronavirus Report](https://github.com/awesome-cli/coronavirus-report)
 
-[![NPM version](http://img.shields.io/npm/v/coronavirus-report.svg?style=flat-square)](https://www.npmjs.com/package/coronavirus-report)
-[![NPM downloads](http://img.shields.io/npm/dm/coronavirus-report.svg?style=flat-square)](https://www.npmjs.com/package/coronavirus-report)
+[![NPM version](https://img.shields.io/npm/v/coronavirus-report.svg?style=flat-square)](https://www.npmjs.com/package/coronavirus-report)
+[![NPM downloads](https://img.shields.io/npm/dm/coronavirus-report.svg?style=flat-square)](https://www.npmjs.com/package/coronavirus-report)
 
 ## About
 
-Coronavirus statisitcs CLI
+Coronavirus statistics CLI
 
 **[COVID-19 statistics API used in the project](https://covid19.mathdro.id/api)**
+
+## Prerequisites
+
+- Node.js
+- npm/Yarn
 
 ## How to Install
 
